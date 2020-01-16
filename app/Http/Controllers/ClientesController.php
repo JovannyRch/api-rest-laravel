@@ -36,7 +36,7 @@ class ClientesController extends Controller
             'email' => 'required|string|max:255|email|unique:clientes'
         ]);
         if($validator->fails()){
-            $repuesta = array('detail' => 'Registro no válido','status'=>404);
+            $respuesta = array('detail' => 'Registro no válido','status'=>404);
             echo json_encode($respuesta, true);
         }
         else{
@@ -51,13 +51,16 @@ class ClientesController extends Controller
             $cliente->id_cliente = $id_cliente;
             $cliente->llave_secreta = $llave_secreta;
             $cliente->save();
-            $json = array(
+            $respuesta = array(
                 'status'=> 200,
-                'id_cliente'=>$id_cliente,
-                'llave_secreta'=>$llave_secreta
+                'detail'=> 'Registro exitoso',
+                'credenciales' => array(
+                    'id_cliente'=>$id_cliente,
+                    'llave_secreta'=>$llave_secreta
+                )
             );
 
-            echo json_encode($json);
+            echo json_encode($respuesta);
         }
     }
 }

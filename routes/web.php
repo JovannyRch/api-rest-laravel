@@ -13,3 +13,4 @@
 
 Route::resource('/','ClientesController');
 Route::resource('/registro','ClientesController');
+Route::resource('/cursos', 'CursosController');
