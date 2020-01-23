@@ -19,6 +19,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'http://jovannyrch.com/registro'
+        'http://jovannyrch.com/registro',
+        'http://jovannyrch.com/cursos',
+        'http://jovannyrch.com/clientes',
+        'http://jovannyrch.com/cursos/*'
     ];
 }

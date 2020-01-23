@@ -41,9 +41,11 @@ class ClientesController extends Controller
         }
         else{
             $id_cliente = Hash::make($nombre.$apellido.$email);
+            $id_cliente = str_replace('$','-',$id_cliente);
             $llave_secreta = Hash::make($apellido.$email.$nombre,[
                 'rounds' => 12
-            ]);
+                ]);
+            $llave_secreta = str_replace('$','-',$llave_secreta);
             $cliente = new Clientes();
             $cliente->nombre = $nombre;
             $cliente->email = $email;
